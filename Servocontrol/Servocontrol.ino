@@ -25,8 +25,8 @@ void setup()
 
 void loop() 
 { 
-  //TODO: wenn kein Input, dann aktive Stabilisierung -> Algorithmus mit Output pitch, roll, coll, yaw
-  //TODO: Input bekommen -> Interrupt? kphochdrölf
+  //ToDo(da): wenn kein Input, dann aktive Stabilisierung -> Algorithmus mit Output pitch, roll, coll, yaw
+  //ToDo(da): Input bekommen -> Interrupt? kphochdrölf
   //Output in pitch, roll, coll, yaw
   
   servoRval = ((-4) * pitch + (-7) * roll + coll);
