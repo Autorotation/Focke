@@ -1,6 +1,7 @@
 ////Steuerung der Servos
 
 #include <Servo.h>
+#include "PIDv1.h"
 
 Servo motor, servoR, servoL, servoH, servoT;     // create servo object (Motordrehzahl, Taumelscheibe Rechts, Taumelscheibe Links, Taumelscheibe Hinten, Heckrotor)
 

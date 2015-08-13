@@ -1,3 +1,5 @@
+#include "Arduino.h"
+#include "PIDv1.h"
 /**********************************************************************************************
  * Arduino PID Library - Version 1.1.1
  * by Brett Beauregard <br3ttb@gmail.com> brettbeauregard.com
