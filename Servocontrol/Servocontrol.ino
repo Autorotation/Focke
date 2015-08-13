@@ -21,6 +21,25 @@ void setup()
   servoL.attach(10);
   servoH.attach(11);
   servoT.attach(12);
+  motor.write(0);
+  
+  servoR.write(90);
+  servoL.write(90);
+  servoH.write(90);
+  servoT.write(90);
+  delay(5000);
+  
+  servoR.write(140);
+  servoL.write(40);
+  servoH.write(40);
+  servoT.write(40);
+  delay(2000);
+  
+  servoR.write(40);
+  servoL.write(140);
+  servoH.write(140);
+  servoT.write(140);
+  delay(2000);
   
 }
 
@@ -32,16 +51,17 @@ void loop()
     
   for(int x=0; x<10; x++){
     nick = 10 * x + 40;
-   
+       
     for(int y=0; y<10; y++){
       roll = 10 * y + 40;
       
       for(int z=0; z<10; z++){
         coll = 10 * z + 40;
-        
+        execute();
+        delay(100);
       }
     } 
-    execute(); 
+    
   }
   
 } 
@@ -52,14 +72,14 @@ void execute(){
   servoLval = (nick-90) / (-2) + (roll-90) + (coll-90) + 90;
   servoHval = (nick-90) + (coll-90) + 90;
 
-  if(servoRval < 40)  { servoRval = 40;  }
-  if(servoRval > 140) { servoRval = 140; }
-  if(servoLval < 40)  { servoRval = 40;  }
-  if(servoLval > 140) { servoRval = 140; }
-  if(servoHval < 40)  { servoRval = 40;  }
-  if(servoHval > 140) { servoRval = 140; }
-  if(yaw < 40)  { servoRval = 40;  }
-  if(yaw > 140) { servoRval = 140; }
+  if(servoRval < 70)  { servoRval = 70;  }
+  if(servoRval > 110) { servoRval = 110; }
+  if(servoLval < 70)  { servoLval = 70;  }
+  if(servoLval > 110) { servoLval = 110; }
+  if(servoHval < 70)  { servoHval = 70;  }
+  if(servoHval > 110) { servoHval = 110; }
+  if(yaw < 70)  { yaw = 70;  }
+  if(yaw > 110) { yaw = 110; }
 
   servoR.write(servoRval);
   servoL.write(servoLval);
