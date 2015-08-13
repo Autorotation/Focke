@@ -4,15 +4,18 @@
 #include "PIDv1.h"
 
 Servo motor, servoR, servoL, servoH, servoT;     // create servo object (Motordrehzahl, Taumelscheibe Rechts, Taumelscheibe Links, Taumelscheibe Hinten, Heckrotor)
+int middle = 100;
+int up = 130;
+int down = 70;
 
-int nick = 90;  //Neigung nach vorne
-int roll = 90;  //Neigung nach rechts
-int coll = 90;  //Kollektive Blattverstellung
-int yaw = 90;   //Drehung um Rotorachse, in Servo-Form
+int nick = middle;  //Neigung nach vorne
+int roll = middle;  //Neigung nach rechts
+int coll = middle;  //Kollektive Blattverstellung
+int yaw = middle;   //Drehung um Rotorachse, in Servo-Form
 
-int servoRval = 90;
-int servoLval = 90;
-int servoHval = 90;
+int servoRval = middle;
+int servoLval = middle;
+int servoHval = middle;
 
 void setup()
 {
@@ -21,24 +24,25 @@ void setup()
   servoL.attach(10);
   servoH.attach(11);
   servoT.attach(12);
+  
   motor.write(0);
   
-  servoR.write(90);
-  servoL.write(90);
-  servoH.write(90);
-  servoT.write(90);
+  servoR.write(middle);
+  servoL.write(middle);
+  servoH.write(middle);
+  servoT.write(middle);
   delay(5000);
   
-  servoR.write(130);
-  servoL.write(50);
-  servoH.write(50);
-  servoT.write(50);
+  servoR.write(up);
+  servoL.write(down);
+  servoH.write(down);
+  servoT.write(down);
   delay(2000);
   
-  servoR.write(50);
-  servoL.write(130);
-  servoH.write(130);
-  servoT.write(130);
+  servoR.write(down);
+  servoL.write(up);
+  servoH.write(up);
+  servoT.write(up);
   delay(2000);
   
 }
@@ -49,33 +53,33 @@ void loop()
   //ToDo(da): Input bekommen -> Interrupt? kphochdrölf
   //Output in nick, roll, coll, yaw
   
-  nick=90;  
-  roll=90;
-  coll=90;
+  nick=middle;  
+  roll=middle;
+  coll=middle;
   execute();
   delay(5000);
   
-  nick=130;  
-  roll=90;
-  coll=90;
+  nick=up;  
+  roll=middle;
+  coll=middle;
   execute();
   delay(5000);
   
-  nick=90;  
-  roll=130;
-  coll=90;
+  nick=middle;  
+  roll=up;
+  coll=middle;
   execute();
   delay(5000);
   
-  nick=90;  
-  roll=90;
-  coll=130;
+  nick=middle;  
+  roll=middle;
+  coll=up;
   execute();
   delay(5000);
   
-  nick=110;  
-  roll=110;
-  coll=110;
+  nick=up;  
+  roll=up;
+  coll=up;
   execute();
   delay(5000);
     
@@ -83,18 +87,18 @@ void loop()
 
 void execute(){
   
-  servoRval = (nick-90) / (-2) + (roll-90) + (-1) * (coll-90) + 90;
-  servoLval = (nick-90) / (-2) + (roll-90) + (coll-90) + 90;
-  servoHval = (nick-90) + (coll-90) + 90;
+  servoRval = (nick-middle) / (-2) + (roll-middle) + (-1) * (coll-middle) + middle;
+  servoLval = (nick-middle) / (-2) + (roll-middle) + (coll-middle) + middle;
+  servoHval = (nick-middle) + (coll-middle) + middle;
 
-  if(servoRval < 80)  { servoRval = 80;  }
-  if(servoRval > 120) { servoRval = 120; }
-  if(servoLval < 80)  { servoLval = 80;  }
-  if(servoLval > 120) { servoLval = 120; }
-  if(servoHval < 80)  { servoHval = 80;  }
-  if(servoHval > 120) { servoHval = 120; }
-  if(yaw < 60)  { yaw = 60;  }
-  if(yaw > 120) { yaw = 120; }
+  if(servoRval < down)  { servoRval = down;  }
+  if(servoRval > up) { servoRval = up; }
+  if(servoLval < down)  { servoLval = down;  }
+  if(servoLval > up) { servoLval = up; }
+  if(servoHval < down)  { servoHval = down;  }
+  if(servoHval > up) { servoHval = up; }
+  if(yaw < down)  { yaw = down;  }
+  if(yaw > up) { yaw = up; }
 
   servoR.write(180-servoRval);
   servoL.write(180-servoLval);
