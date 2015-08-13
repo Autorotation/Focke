@@ -4,9 +4,9 @@
 
 Servo motor, servoR, servoL, servoH, servoT;     // create servo object (Motordrehzahl, Taumelscheibe Rechts, Taumelscheibe Links, Taumelscheibe Hinten, Heckrotor)
 
-int pitch = 512; //Neigung nach vorne, 0-1023?
-int roll = 512;  //Neigung nach rechts
-int coll = 512;  //Kollektive Blattverstellung
+int pitch = 90; //Neigung nach vorne
+int roll = 90;  //Neigung nach rechts
+int coll = 90;  //Kollektive Blattverstellung
 int yaw = 90;   //Drehung um Rotorachse, in Servo-Form
 
 int servoRval = 0;
